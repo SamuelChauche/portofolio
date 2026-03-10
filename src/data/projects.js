@@ -1,17 +1,18 @@
 import ethccwtfLogo from '../assets/ethccwtf.png'
+import sofiaLogo from '../assets/logosofia.png'
 
 export const projects = [
   {
     title: 'sofia.intuition.box',
     description: 'Exploring intuition on the decentralized web.',
-    url: 'https://sofia.intuition.box',
+    url: 'https://x.com/0xSofia3',
     tags: ['Web3', 'Intuition'],
-    logo: null,
+    logo: sofiaLogo,
   },
   {
     title: 'ethcc-wtf.eth.box',
     description: 'EthCC community project.',
-    url: 'https://ethcc-wtf.eth.box',
+    url: 'https://ethcc-wtf.passive-records.box/',
     tags: ['Web3', 'EthCC'],
     logo: ethccwtfLogo,
   },

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wsl -d Ubuntu-24.04 -- bash -c \"export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && which node 2>&1; which npm 2>&1; ls /usr/local/bin/node 2>&1; ls /usr/bin/node 2>&1; command -v nvm 2>&1; cat ~/.nvm/alias/default 2>&1; ls ~/.nvm/versions/node/ 2>&1\")",
+      "Bash(wsl -d Ubuntu-24.04 -- bash -c 'export HOME=/home/samuel_chauche && source \"\"$HOME/.nvm/nvm.sh\"\" && node --version && npm --version && pwd')",
+      "Bash(wsl -d Ubuntu-24.04 -- bash -c 'cd /home/samuel_chauche/passiverecordsbox && mkdir -p src/assets src/components src/data && cp \"\"ChatGPT_Image_22_aout_2025_14_13_08_optimized_1000.png\"\" src/assets/profile.png && cp \"\"Logo white.png\"\" src/assets/logo.png && rm -f readme.md README.md && ls src/ src/assets/')",
+      "Bash(wsl -d Ubuntu-24.04 -- bash -c 'export HOME=/home/samuel_chauche && source \"\"$HOME/.nvm/nvm.sh\"\" && cd /home/samuel_chauche/passiverecordsbox && npm run build 2>&1')",
+      "Bash(cd \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\samuel_chauche\\\\passiverecordsbox\")",
+      "Bash(cp src/assets/logopassiverecords.jpg public/favicon.jpg)"
+    ]
+  }
+}
