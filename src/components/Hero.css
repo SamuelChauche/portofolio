@@ -1,49 +1,57 @@
+@font-face {
+  font-family: 'Compressa VF';
+  src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+  font-style: normal;
+}
+
 .hero {
-  min-height: 70vh;
+  position: relative;
+  min-height: 50vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
   padding: 2rem;
   padding-top: var(--nav-height);
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .hero__content {
-  text-align: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   animation: fadeUp 0.7s ease-out both;
 }
 
-.hero__avatar {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 2rem;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 50px rgba(200, 191, 169, 0.12);
+.hero__title-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.hero__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.hero__logo {
+  height: 15rem;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-family: 'Compressa VF', var(--font-sans);
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 300;
+  line-height: 0.95;
   letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-  font-family: var(--font-mono);
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
 }
 
 .hero__tagline {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
   font-weight: 300;
-}
-
-@media (max-width: 768px) {
-  .hero__avatar {
-    width: 140px;
-    height: 140px;
-  }
 }

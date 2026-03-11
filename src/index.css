@@ -10,7 +10,7 @@
   --border-hover: rgba(200, 191, 169, 0.3);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --section-padding: 3rem 2rem;
+  --section-padding: 1.5rem 2rem;
   --max-width: 900px;
   --nav-height: 64px;
 }

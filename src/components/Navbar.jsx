@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import logo from '../assets/logopassiverecords.jpg'
 import './Navbar.css'
 
 function Navbar() {
@@ -14,10 +13,13 @@ function Navbar() {
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <a href="#" className="navbar__logo">
-        <img src={logo} alt="passive-records.box logo" />
+        passive-records.box
       </a>
       <div className="navbar__links">
+        <a href="#about">About</a>
+        <span className="navbar__sep">/</span>
         <a href="#projects">Projects</a>
+        <span className="navbar__sep">/</span>
         <a href="#contact">Contact</a>
       </div>
     </nav>

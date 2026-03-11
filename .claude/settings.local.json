@@ -8,7 +8,11 @@
       "Bash(cd \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\samuel_chauche\\\\passiverecordsbox\")",
       "Bash(cp src/assets/logopassiverecords.jpg public/favicon.jpg)",
       "Bash(gh run:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(wsl -d Ubuntu-24.04 bash -c \"cd /home/samuel_chauche/passiverecordsbox && npm install three gsap\")",
+      "Bash(wsl -d Ubuntu-24.04 -e bash -lc \"cd /home/samuel_chauche/passiverecordsbox && which npm && npm --version\")",
+      "Bash(wsl -d Ubuntu-24.04 -e bash -lc \"which node; ls /usr/local/bin/node 2>/dev/null; ls /usr/bin/node 2>/dev/null; dpkg -l | grep nodejs 2>/dev/null | head -3\")"
     ]
   }
 }
