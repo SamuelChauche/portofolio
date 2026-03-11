@@ -1,0 +1,71 @@
+.bento__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.bento__card {
+  background: #12121abd;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.bento__card--bio {
+  animation-delay: 0.1s;
+}
+
+.bento__card--skills {
+  animation-delay: 0.2s;
+}
+
+.bento__card--stats {
+  animation-delay: 0.3s;
+}
+
+.bento__title {
+  font-family: 'Doto', var(--font-sans);
+  font-weight: 529;
+  font-variation-settings: 'ROND' 0;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.bento__text {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.bento__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.bento__tag {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.bento__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .bento__grid {
+    grid-template-columns: 1fr;
+  }
+}

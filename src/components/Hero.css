@@ -6,7 +6,6 @@
 
 .hero {
   position: relative;
-  min-height: 50vh;
   display: flex;
   align-items: flex-end;
   padding: 2rem;
@@ -28,13 +27,15 @@
   gap: 1.5rem;
   background-color: rgba(0, 0, 0, 0.705);
   border-radius: 20px;
+  padding: 1rem;
 }
 
 .hero__logo {
-  height: 15rem;
-  width: 15rem;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
   border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .hero__text {
@@ -44,17 +45,59 @@
 
 .hero__title {
   font-family: 'Doto', var(--font-sans);
-  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 529;
   font-variation-settings: 'ROND' 0;
-  line-height: 0.95;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  white-space: nowrap;
 }
 
 .hero__tagline {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   font-weight: 300;
+  margin-top: 0.25rem;
+}
+
+.hero__socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.hero__social {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.hero__social:hover {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 1.5rem 1rem;
+    padding-top: 2rem;
+  }
+
+  .hero__title-row {
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  .hero__logo {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .hero__title {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .hero__tagline {
+    font-size: 0.85rem;
+  }
 }

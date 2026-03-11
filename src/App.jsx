@@ -1,6 +1,6 @@
 import Hero from './components/Hero'
+import Bento from './components/Bento'
 import Projects from './components/Projects'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ColorBends from './components/ColorBends'
 import './App.css'
@@ -24,8 +24,8 @@ function App() {
       </div>
       <main>
         <Hero />
+        <Bento />
         <Projects />
-        <Contact />
       </main>
       <Footer />
     </>
