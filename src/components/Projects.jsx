@@ -1,7 +1,8 @@
 import { useRef } from 'react'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
-import { ParticleCard, GlobalSpotlight, useMobileDetection } from './MagicBento'
+import { ParticleCard, GlobalSpotlight } from './MagicBento'
+import { useMobileDetection } from './useMobileDetection'
 import './Projects.css'
 
 function Projects() {
