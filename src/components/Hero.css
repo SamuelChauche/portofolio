@@ -43,9 +43,10 @@
 }
 
 .hero__title {
-  font-family: 'Compressa VF', var(--font-sans);
+  font-family: 'Doto', var(--font-sans);
   font-size: clamp(3.5rem, 10vw, 6rem);
-  font-weight: 300;
+  font-weight: 529;
+  font-variation-settings: 'ROND' 0;
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--text-primary);
