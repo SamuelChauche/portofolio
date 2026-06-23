@@ -36,18 +36,6 @@
   to { opacity: 1; }
 }
 
-.mosaic__cap {
-  position: absolute;
-  left: var(--gutter);
-  bottom: clamp(1.5rem, 4vh, 3rem);
-  z-index: 1;
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--paper);
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.6);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .mosaic__video { animation: none; }
 }

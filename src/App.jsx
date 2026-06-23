@@ -19,6 +19,7 @@ function App() {
         <Hero />
         <Bento />
         <VideoMosaic />
+        <VideoMosaic />
         <Projects />
         <Gallery />
         <Contact />
