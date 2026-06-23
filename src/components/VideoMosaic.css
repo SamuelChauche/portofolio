@@ -1,18 +1,19 @@
 .mosaic {
   position: relative;
+  height: 100svh;
   min-height: 100svh;
   background: var(--ink);
   overflow: hidden;
 }
 
-/* Full-bleed grid filling the whole viewport, tiles edge to edge, opaque. */
+/* 3 x 2 grid, edge to edge, filling the viewport exactly (rows always whole). */
 .mosaic__grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   width: 100%;
-  height: 100svh;
+  height: 100%;
   gap: 0;
 }
 
@@ -30,16 +31,14 @@
   animation: tileIn 0.5s ease both;
 }
 
-/* Each freshly swapped-in clip fades up, so the change is soft, not a hard cut. */
 @keyframes tileIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .mosaic__video { animation: none; }
-}
-
 @media (max-width: 700px) {
-  .mosaic__grid { grid-template-columns: repeat(3, 1fr); }
+  .mosaic__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
 }

@@ -19,7 +19,6 @@ function App() {
         <Hero />
         <Bento />
         <VideoMosaic />
-        <VideoMosaic />
         <Projects />
         <PhotoReel />
         <Contact />
