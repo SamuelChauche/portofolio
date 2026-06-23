@@ -22,10 +22,9 @@ main.stack > *:not(:first-child) {
   box-shadow: 0 -24px 60px rgba(17, 17, 17, 0.18);
 }
 
-/* The gallery is masonry: its height tracks the viewport width, so forcing a
-   full screen leaves empty space below the photos. Let it scroll naturally
-   inside the stack instead. The cover transitions with Work and Contact stay. */
-main.stack > #film {
+/* The photo reel manages its own tall scroll + sticky pin for the GSAP
+   cross-fade, so it opts out of the sticky-stack panel behaviour. */
+main.stack > #photo-reel {
   position: relative;
   min-height: 0;
 }

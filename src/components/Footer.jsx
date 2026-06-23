@@ -21,7 +21,7 @@ function Footer() {
             <a href="#top">Top</a>
             <a href="#work">Work</a>
             <a href="#about">About</a>
-            <a href="#film">Film</a>
+            <a href="#photo-reel">Film</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>

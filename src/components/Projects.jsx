@@ -9,11 +9,11 @@ function Projects() {
         <h2 className="projects__title" data-reveal>Selected work</h2>
       </header>
 
-      <ol className="projects__index">
+      <ul className="work-grid">
         {projects.map((project, i) => (
           <ProjectCard key={project.title} {...project} index={i + 1} />
         ))}
-      </ol>
+      </ul>
     </section>
   )
 }

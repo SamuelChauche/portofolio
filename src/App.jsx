@@ -3,7 +3,7 @@ import Hero from './components/Hero'
 import Bento from './components/Bento'
 import VideoMosaic from './components/VideoMosaic'
 import Projects from './components/Projects'
-import Gallery from './components/Gallery'
+import PhotoReel from './components/PhotoReel'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { useReveal } from './hooks/useReveal'
@@ -21,7 +21,7 @@ function App() {
         <VideoMosaic />
         <VideoMosaic />
         <Projects />
-        <Gallery />
+        <PhotoReel />
         <Contact />
       </main>
       <Footer />

@@ -1,0 +1,54 @@
+/* Tall section provides the scroll; the inner stage pins (sticky) while GSAP
+   cross-fades full-screen photos one after another. */
+.reel {
+  position: relative;
+  height: 500svh;
+  background: var(--ink);
+}
+
+.reel__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.reel__layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.reel__layer:first-child { opacity: 1; }
+
+/* Blurred copy fills the frame so portrait and landscape both feel full-screen. */
+.reel__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+  filter: blur(28px) brightness(0.5);
+}
+
+/* The actual photo, never cropped. */
+.reel__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.reel__label {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  z-index: 50;
+  color: var(--paper);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel { height: 100svh; }
+}

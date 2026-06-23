@@ -1,94 +1,88 @@
-.project-row {
-  border-bottom: var(--hairline);
+.work-card {
+  display: flex;
+  background: var(--paper);
 }
 
-/* The clickable index row. Type sits on paper; hover floods the field. */
-.project-row__main {
-  display: grid;
-  grid-template-columns: 3.5rem minmax(0, 1.2fr) minmax(0, 1.4fr) auto;
-  align-items: center;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(1.25rem, 3vw, 2.25rem) 0;
-  color: var(--obsidian);
-  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-row__main:hover {
-  padding-left: clamp(0.75rem, 2vw, 1.5rem);
-  padding-right: clamp(0.75rem, 2vw, 1.5rem);
-  background: rgba(26, 75, 255, 0.05);
+.work-card__link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  min-height: 250px;
   color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
 }
 
-.project-row__no {
+.work-card__link:hover {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.work-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.work-card__no {
   font-variant-numeric: tabular-nums;
   font-size: var(--text-label);
   letter-spacing: 0.02em;
-  opacity: 0.45;
+  opacity: 0.5;
 }
 
-.project-row__id {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  min-width: 0;
-}
-
-.project-row__logo {
-  width: 34px;
-  height: 34px;
+.work-card__logo {
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
   overflow: hidden;
 }
-.project-row__logo img {
+.work-card__logo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.project-row__title {
+.work-card__title {
+  margin-top: auto;
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
   line-height: 1;
   letter-spacing: -0.02em;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.project-row__desc {
+.work-card__desc {
   font-size: var(--text-body);
-  color: var(--obsidian);
   opacity: 0.7;
 }
 
-.project-row__go {
+/* Arrow surfaces on hover, top-right. */
+.work-card__go {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.25rem);
+  right: clamp(1.5rem, 3vw, 2.25rem);
+  width: 26px;
+  height: 26px;
+  color: var(--accent-text);
   opacity: 0;
-  transform: scale(0.7);
+  transform: translate(-4px, 4px);
   transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.project-row__main:hover .project-row__go { opacity: 1; transform: scale(1); }
-
-.project-row__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  padding: 0 0 1rem 3.5rem;
-  font-size: var(--text-label);
-  letter-spacing: 0.01em;
+.work-card__go svg { width: 100%; height: 100%; }
+.work-card__link:hover .work-card__go {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
-@media (max-width: 820px) {
-  .project-row__main {
-    grid-template-columns: 2.25rem 1fr auto;
-    gap: 1rem;
-    row-gap: 0.4rem;
-  }
-  .project-row__desc {
-    grid-column: 2 / 4;
-    font-size: 0.95rem;
-  }
-  .project-row__go { display: none; }
-  .project-row__links { padding-left: 2.25rem; }
+.work-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 clamp(1.5rem, 3vw, 2.25rem) 1.25rem;
+  font-size: var(--text-label);
+  letter-spacing: 0.01em;
 }
