@@ -1,0 +1,85 @@
+.sound {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.65rem;
+  background: transparent;
+  color: var(--ink);
+  border: var(--hairline);
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.sound-toggle:hover { border-color: var(--accent); }
+
+.sound-toggle.is-playing {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+/* Next-track button, joined to the toggle. */
+.sound-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  background: transparent;
+  color: var(--ink);
+  border: var(--hairline);
+  border-left: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.sound-next svg { width: 13px; height: 13px; display: block; }
+.sound-next:hover { color: var(--accent); }
+.sound-next.is-playing {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.sound-toggle__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.sound-toggle__bars i {
+  display: block;
+  width: 2px;
+  height: 3px;
+  background: currentColor;
+}
+
+.sound-toggle.is-playing .sound-toggle__bars i {
+  animation: eq 0.9s ease-in-out infinite;
+}
+.sound-toggle.is-playing .sound-toggle__bars i:nth-child(2) { animation-delay: 0.18s; }
+.sound-toggle.is-playing .sound-toggle__bars i:nth-child(3) { animation-delay: 0.36s; }
+.sound-toggle.is-playing .sound-toggle__bars i:nth-child(4) { animation-delay: 0.12s; }
+
+@keyframes eq {
+  0%, 100% { height: 3px; }
+  50% { height: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sound-toggle.is-playing .sound-toggle__bars i { animation: none; height: 8px; }
+}
+
+@media (max-width: 600px) {
+  .sound-toggle__label { display: none; }
+}

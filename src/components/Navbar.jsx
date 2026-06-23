@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import SoundToggle from './SoundToggle'
 import './Navbar.css'
 
 function Navbar() {
@@ -11,18 +12,17 @@ function Navbar() {
   }, [])
 
   return (
-    <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
-      <a href="#" className="navbar__logo">
-        passive-records.box
+    <>
+      <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
+        <a href="#top" className="navbar__brand label">© passive-records.box</a>
+        <SoundToggle />
+      </nav>
+
+      <a href="#contact" className="contact-badge" aria-label="Contact me">
+        <span>Contact</span>
+        <span>me ↗</span>
       </a>
-      <div className="navbar__links">
-        <a href="#about">About</a>
-        <span className="navbar__sep">/</span>
-        <a href="#projects">Projects</a>
-        <span className="navbar__sep">/</span>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+    </>
   )
 }
 

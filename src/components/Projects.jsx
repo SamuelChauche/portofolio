@@ -4,18 +4,16 @@ import './Projects.css'
 
 function Projects() {
   return (
-    <section id="projects" className="section projects">
-      <div className="projects__grid">
+    <section id="work" className="projects field field--paper">
+      <header className="projects__header">
+        <h2 className="projects__title" data-reveal>Selected work</h2>
+      </header>
+
+      <ol className="projects__index">
         {projects.map((project, i) => (
-          <div
-            key={project.title}
-            className="project-card-wrapper"
-            style={{ animationDelay: `${0.1 + i * 0.15}s` }}
-          >
-            <ProjectCard {...project} />
-          </div>
+          <ProjectCard key={project.title} {...project} index={i + 1} />
         ))}
-      </div>
+      </ol>
     </section>
   )
 }

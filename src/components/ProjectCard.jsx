@@ -1,53 +1,51 @@
 import './ProjectCard.css'
 
-function ProjectCard({ title, description, url, logo, logoCrop, links, gradient, orbPos, style }) {
-  const Tag = url ? 'a' : 'div'
-  const tagProps = url
-    ? { href: url, target: '_blank', rel: 'noopener noreferrer' }
+function ProjectCard({ title, description, url, logo, links, index }) {
+  const primaryUrl = url || links?.find((l) => l.label?.toLowerCase().includes('website'))?.url || links?.[0]?.url
+  const Tag = primaryUrl ? 'a' : 'div'
+  const tagProps = primaryUrl
+    ? { href: primaryUrl, target: '_blank', rel: 'noopener noreferrer' }
     : {}
 
   return (
-    <Tag
-      {...tagProps}
-      className="project-card"
-      style={style}
-    >
-      {gradient && (
-        <div className="project-card__bg">
-          <div
-            className="project-card__orb"
-            style={{ background: gradient, ...orbPos }}
-          />
+    <li className="project-row" data-reveal>
+      <Tag {...tagProps} className="project-row__main">
+        <span className="project-row__no">{String(index).padStart(2, '0')}</span>
+
+        <span className="project-row__id">
+          {logo && (
+            <span className="project-row__logo">
+              <img src={logo} alt="" aria-hidden="true" />
+            </span>
+          )}
+          <span className="project-row__title">{title}</span>
+        </span>
+
+        <span className="project-row__desc">{description}</span>
+
+        <span className="circle-btn project-row__go" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+            <path d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
+        </span>
+      </Tag>
+
+      {links && (
+        <div className="project-row__links">
+          {links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-row__link ink-link"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       )}
-      <div className="project-card__content">
-        <div className="project-card__header">
-          {logo && (
-            <div className={`project-card__logo${logoCrop ? ' project-card__logo--crop' : ''}`}>
-              <img src={logo} alt={`${title} logo`} />
-            </div>
-          )}
-          {links && (
-            <div className="project-card__links">
-              {links.map((link) => (
-                <a
-                  key={link.url}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card__link"
-                  title={link.label}
-                >
-                  <img src={link.icon} alt={link.label} />
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-        <h3 className="project-card__title">{title}</h3>
-        <p className="project-card__desc">{description}</p>
-      </div>
-    </Tag>
+    </li>
   )
 }
 

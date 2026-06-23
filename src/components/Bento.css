@@ -1,71 +1,103 @@
-.bento__grid {
+/* Split-screen editorial about: two tonal steps meeting at a hard edge. */
+.about {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: stretch;
+  background: var(--paper);
 }
 
-.bento__card {
-  background: #12121abd;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.25rem;
-  animation: fadeUp 0.6s ease-out both;
+.about__portrait {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.bento__card--bio {
-  animation-delay: 0.1s;
+.about__photo {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: var(--hairline);
 }
 
-.bento__card--skills {
-  animation-delay: 0.2s;
+.about__name {
+  margin-top: auto;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
-.bento__card--stats {
-  animation-delay: 0.3s;
+.about__role {
+  max-width: 32ch;
+  font-size: var(--text-body);
+  color: var(--ink-muted);
 }
 
-.bento__title {
-  font-family: 'Doto', var(--font-sans);
-  font-weight: 529;
-  font-variation-settings: 'ROND' 0;
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-  color: var(--text-primary);
+/* Right reading panel */
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
 }
 
-.bento__text {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.5;
+.about__lede {
+  max-width: 34ch;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  color: var(--ink);
 }
 
-.bento__tags {
+.about__block { display: flex; flex-direction: column; gap: 1rem; }
+
+/* Quiet group label, not an uppercase eyebrow. */
+.about__grouplabel {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+/* Logo wall: monochrome brand marks, lift on hover. */
+.about__stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  align-items: center;
+  gap: clamp(1.1rem, 2.6vw, 1.7rem);
+  list-style: none;
 }
 
-.bento__tag {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+.about__tool { display: flex; }
+
+.about__tool img {
+  height: 30px;
+  width: auto;
+  display: block;
+  opacity: 0.82;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
-.bento__list {
+.about__tool:hover img {
+  transform: translateY(-4px) scale(1.1);
+  opacity: 1;
+}
+
+.about__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .bento__grid {
-    grid-template-columns: 1fr;
-  }
+.about__milestone {
+  padding: 0.9rem 0;
+  font-size: var(--text-body);
+  border-top: var(--hairline);
+}
+.about__milestone:last-child { border-bottom: var(--hairline); }
+
+@media (max-width: 820px) {
+  .about { grid-template-columns: 1fr; }
+  .about__photo { max-width: 220px; }
 }

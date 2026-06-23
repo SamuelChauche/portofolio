@@ -1,0 +1,57 @@
+.mosaic {
+  position: relative;
+  min-height: 100svh;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+/* Full-bleed grid filling the whole viewport, tiles edge to edge, opaque. */
+.mosaic__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  width: 100%;
+  height: 100svh;
+  gap: 0;
+}
+
+.mosaic__cell {
+  position: relative;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.mosaic__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: tileIn 0.5s ease both;
+}
+
+/* Each freshly swapped-in clip fades up, so the change is soft, not a hard cut. */
+@keyframes tileIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mosaic__cap {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  z-index: 1;
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--paper);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosaic__video { animation: none; }
+}
+
+@media (max-width: 700px) {
+  .mosaic__grid { grid-template-columns: repeat(3, 1fr); }
+}

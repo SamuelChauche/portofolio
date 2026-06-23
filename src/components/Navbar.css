@@ -6,51 +6,59 @@
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  z-index: 100;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  padding: 0 var(--gutter);
+  z-index: 9000;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Thin hairline only once the masthead has scrolled past. No blur, no card. */
 .navbar--scrolled {
-  background: var(--bg-nav);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--border);
+  background: var(--paper);
+  box-shadow: 0 1px 0 var(--obsidian);
 }
 
-.navbar__logo {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+.navbar__brand {
+  color: var(--obsidian);
+  text-transform: none;
+  transition: opacity 0.2s ease;
 }
 
-.navbar__logo:hover {
-  color: var(--text-primary);
-}
+.navbar__brand:hover { opacity: 0.55; }
 
-.navbar__links {
+/* The signature: a sharp white square, obsidian text, rotated into the corner. */
+.contact-badge {
+  position: fixed;
+  top: clamp(0.75rem, 2vw, 1.4rem);
+  right: clamp(0.75rem, 2vw, 1.4rem);
+  z-index: 9500;
+  width: 86px;
+  height: 86px;
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 12px;
+  background: var(--paper);
+  color: var(--obsidian);
+  font-size: var(--text-label);
+  line-height: 1.25;
+  letter-spacing: var(--tracking-label);
+  border: var(--hairline);
+  transform: rotate(-15deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, color 0.25s ease;
 }
 
-.navbar__links a {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: color 0.2s ease;
+.contact-badge:hover {
+  transform: rotate(0deg) scale(1.04);
+  background: var(--inkwell);
+  color: var(--paper);
 }
 
-.navbar__links a:hover {
-  color: var(--text-primary);
-}
-
-.navbar__sep {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  opacity: 0.5;
+@media (max-width: 600px) {
+  .contact-badge {
+    width: 70px;
+    height: 70px;
+    font-size: 0.75rem;
+  }
 }

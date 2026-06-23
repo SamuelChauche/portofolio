@@ -1,10 +1,41 @@
-.app-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+#root {
+  overflow-x: clip;
 }
 
-.app-bg canvas {
-  pointer-events: auto;
+/* Stacked-slides scroll: every section pins at the top, and the next one
+   glides up over it like a deck of slides. CSS sticky does the pinning
+   (smooth, native); GSAP scales + fades the outgoing panel behind it. */
+main.stack {
+  position: relative;
+  z-index: 1;
+}
+
+main.stack > section,
+main.stack > figure {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+}
+
+/* Each incoming panel casts a soft shadow over the one it covers. */
+main.stack > *:not(:first-child) {
+  box-shadow: 0 -24px 60px rgba(17, 17, 17, 0.18);
+}
+
+/* The gallery is masonry: its height tracks the viewport width, so forcing a
+   full screen leaves empty space below the photos. Let it scroll naturally
+   inside the stack instead. The cover transitions with Work and Contact stay. */
+main.stack > #film {
+  position: relative;
+  min-height: 0;
+}
+
+/* No stacking under reduced motion: fall back to a plain vertical scroll. */
+@media (prefers-reduced-motion: reduce) {
+  main.stack > section,
+  main.stack > figure {
+    position: static;
+    min-height: 0;
+    box-shadow: none;
+  }
 }

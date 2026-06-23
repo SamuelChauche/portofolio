@@ -1,103 +1,49 @@
-@font-face {
-  font-family: 'Compressa VF';
-  src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
-  font-style: normal;
-}
-
 .hero {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding: 2rem;
-  padding-top: 3rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.hero__content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  animation: fadeUp 0.7s ease-out both;
-}
-
-.hero__title-row {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.705);
-  border-radius: 20px;
-  padding: 1rem;
-}
-
-.hero__logo {
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 12px;
-  flex-shrink: 0;
-}
-
-.hero__text {
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--nav-height) + 3vh);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
+  overflow: hidden;
 }
 
-.hero__title {
-  font-family: 'Doto', var(--font-sans);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 529;
-  font-variation-settings: 'ROND' 0;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  white-space: nowrap;
+.hero__kicker {
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+  color: var(--ink-muted);
+}
+
+/* The masthead IS the artwork: 331px display, leading 0.80, tight tracking. */
+.hero__lockup {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* The only saturated mark in the hero: a cobalt drop-arrow. */
+.hero__arrow {
+  display: block;
+  font-weight: 300;
+  line-height: 0.7;
+  margin-top: 0.04em;
+  font-size: 0.62em;
+  color: var(--accent);
 }
 
 .hero__tagline {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  font-weight: 300;
-  margin-top: 0.25rem;
+  margin-top: clamp(1.5rem, 4vh, 2.75rem);
+  max-width: var(--measure);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--ink);
 }
 
-.hero__socials {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.hero__social {
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-}
-
-.hero__social:hover {
-  color: var(--text-primary);
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: auto;
-    padding: 1.5rem 1rem;
-    padding-top: 2rem;
-  }
-
-  .hero__title-row {
-    gap: 1rem;
-    padding: 0.75rem;
-  }
-
-  .hero__logo {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  .hero__title {
-    font-size: clamp(1.5rem, 8vw, 2.5rem);
-  }
-
-  .hero__tagline {
-    font-size: 0.85rem;
-  }
+.hero__tagline em {
+  font-style: italic;
+  font-weight: 500;
 }
