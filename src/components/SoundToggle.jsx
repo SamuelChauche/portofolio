@@ -1,54 +1,76 @@
-import { useRef, useState } from 'react'
-import melodic from '../assets/audio/track.mp3'
-import ambient from '../assets/audio/ambient.mp3'
-import jazz from '../assets/audio/jazz.mp3'
-import synth from '../assets/audio/synth.mp3'
+import { useEffect, useRef, useState } from 'react'
 import './SoundToggle.css'
 
-const TRACKS = [
-  { src: melodic, title: 'Melodic Tap' },
-  { src: ambient, title: 'Ambient XP' },
-  { src: jazz, title: 'Erika Remix' },
-  { src: synth, title: 'Element Synth' },
-]
+const SET_URL = 'https://soundcloud.com/shoenmusic/sets/mix-1'
+const WIDGET_SRC =
+  'https://w.soundcloud.com/player/?url=' +
+  encodeURIComponent(SET_URL) +
+  '&auto_play=false&visual=false&hide_related=true&show_comments=false' +
+  '&show_user=false&show_reposts=false&show_teaser=false&show_artwork=false' +
+  '&sharing=false&buying=false&download=false'
+
+let apiPromise = null
+function loadWidgetApi() {
+  if (window.SC && window.SC.Widget) return Promise.resolve()
+  if (apiPromise) return apiPromise
+  apiPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script')
+    s.src = 'https://w.soundcloud.com/player/api.js'
+    s.async = true
+    s.onload = resolve
+    s.onerror = reject
+    document.head.appendChild(s)
+  })
+  return apiPromise
+}
 
 function SoundToggle() {
-  const audioRef = useRef(null)
+  const iframeRef = useRef(null)
+  const widgetRef = useRef(null)
   const [playing, setPlaying] = useState(false)
-  const [idx, setIdx] = useState(0)
 
-  const playTrack = (i) => {
-    const a = audioRef.current
-    if (!a) return
-    if (a.dataset.idx !== String(i)) {
-      a.src = TRACKS[i].src
-      a.dataset.idx = String(i)
+  useEffect(() => {
+    let cancelled = false
+    loadWidgetApi()
+      .then(() => {
+        if (cancelled || widgetRef.current || !iframeRef.current || !window.SC) return
+        const Events = window.SC.Widget.Events
+        const w = window.SC.Widget(iframeRef.current)
+        widgetRef.current = w
+        w.bind(Events.READY, () => w.setVolume(60))
+        w.bind(Events.PLAY, () => setPlaying(true))
+        w.bind(Events.PAUSE, () => setPlaying(false))
+        // Loop the mix endlessly.
+        w.bind(Events.FINISH, () => {
+          w.seekTo(0)
+          w.play()
+        })
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
     }
-    a.volume = 0.55
-    a.play().then(() => setPlaying(true)).catch(() => setPlaying(false))
-  }
+  }, [])
 
   const toggle = () => {
-    const a = audioRef.current
-    if (!a) return
-    if (playing) {
-      a.pause()
-      setPlaying(false)
-    } else {
-      playTrack(idx)
-    }
-  }
-
-  const next = (e) => {
-    e.stopPropagation()
-    const ni = (idx + 1) % TRACKS.length
-    setIdx(ni)
-    playTrack(ni)
+    const w = widgetRef.current
+    if (!w) return
+    if (playing) w.pause()
+    else w.play()
   }
 
   return (
     <div className="sound">
-      <audio ref={audioRef} loop preload="none" />
+      <iframe
+        ref={iframeRef}
+        className="sound__frame"
+        title="ambient"
+        src={WIDGET_SRC}
+        allow="autoplay; encrypted-media"
+        scrolling="no"
+        tabIndex={-1}
+        aria-hidden="true"
+      />
       <button
         type="button"
         className={`sound-toggle${playing ? ' is-playing' : ''}`}
@@ -59,18 +81,7 @@ function SoundToggle() {
         <span className="sound-toggle__bars" aria-hidden="true">
           <i /><i /><i /><i />
         </span>
-        <span className="sound-toggle__label">{playing ? TRACKS[idx].title : 'Sound off'}</span>
-      </button>
-      <button
-        type="button"
-        className={`sound-next${playing ? ' is-playing' : ''}`}
-        onClick={next}
-        aria-label="Next track"
-        title="Next track"
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M6 18l8.5-6L6 6v12zM16 6h2v12h-2z" />
-        </svg>
+        <span className="sound-toggle__label">{playing ? 'Sound on' : 'Sound off'}</span>
       </button>
     </div>
   )

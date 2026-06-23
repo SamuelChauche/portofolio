@@ -1,6 +1,18 @@
 .sound {
   display: inline-flex;
-  align-items: stretch;
+  align-items: center;
+}
+
+/* Hidden SoundCloud widget, rendered but invisible so it can play. */
+.sound__frame {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .sound-toggle {
@@ -23,28 +35,6 @@
 .sound-toggle:hover { border-color: var(--accent); }
 
 .sound-toggle.is-playing {
-  background: var(--accent);
-  color: var(--accent-text);
-  border-color: var(--accent);
-}
-
-/* Next-track button, joined to the toggle. */
-.sound-next {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0.5rem;
-  background: transparent;
-  color: var(--ink);
-  border: var(--hairline);
-  border-left: none;
-  cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-}
-
-.sound-next svg { width: 13px; height: 13px; display: block; }
-.sound-next:hover { color: var(--accent); }
-.sound-next.is-playing {
   background: var(--accent);
   color: var(--accent-text);
   border-color: var(--accent);
