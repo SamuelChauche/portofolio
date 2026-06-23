@@ -14,12 +14,10 @@
   font-weight: 600;
 }
 
-/* Editorial card grid: cards separated by hairlines, framed by a hairline. */
+/* Bordered cards with a real gap: no orphaned grey cells on a partial row. */
 .work-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1px;
-  background: var(--hairline-c);
-  border: var(--hairline);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.1rem);
 }
