@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const films = import.meta.glob('../assets/film/*.jpg', { eager: true, import: 'default' })
 const POOL = Object.values(films)
-const COUNT = 5
+const COUNT = 7
 
 function pickShots() {
   const a = [...POOL]
