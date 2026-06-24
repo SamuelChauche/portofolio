@@ -1,10 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Contact.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const ENDPOINT = 'https://formsubmit.co/ajax/samydavidjames@gmail.com'
 
 function Contact() {
+  const rootRef = useRef(null)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
+
+  // The form reveals physically as you scroll into the section; the links are
+  // there by default. Reduced motion leaves the form visible from the start.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const ctx = gsap.context(() => {
+      const form = rootRef.current.querySelector('.contact__form')
+      if (!form) return
+      gsap.set(form, { opacity: 0, y: 48, pointerEvents: 'none' })
+      gsap.to(form, {
+        opacity: 1,
+        y: 0,
+        pointerEvents: 'auto',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: rootRef.current,
+          start: 'top 80%',
+          end: 'top 28%',
+          scrub: true,
+        },
+      })
+    }, rootRef)
+    return () => ctx.revert()
+  }, [])
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -32,7 +61,7 @@ function Contact() {
     status === 'sending' ? 'Sending...' : status === 'sent' ? 'Sent, thanks' : 'Send'
 
   return (
-    <section id="contact" className="contact field field--accent">
+    <section id="contact" ref={rootRef} className="contact field field--accent">
       <h2 className="contact__title" data-reveal>
         Let&apos;s build<br />something.
       </h2>
@@ -41,7 +70,7 @@ function Contact() {
         Open to Web3 collaborations, open source, and good conversations.
       </p>
 
-      <form className="contact__form" onSubmit={onSubmit} data-reveal>
+      <form className="contact__form" onSubmit={onSubmit}>
         <input type="hidden" name="_subject" value="New message from passive-records.box" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />

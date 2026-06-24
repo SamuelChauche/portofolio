@@ -1,5 +1,6 @@
 .projects {
   background: var(--paper);
+  padding-bottom: clamp(4rem, 10vh, 8rem);
 }
 
 .projects__header {
