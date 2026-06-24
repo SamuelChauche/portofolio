@@ -24,14 +24,24 @@
   color: var(--ink);
 }
 
-/* The only saturated mark in the hero: a cobalt drop-arrow. */
-.hero__arrow {
-  display: block;
-  font-weight: 300;
-  line-height: 0.7;
-  margin-top: 0.04em;
-  font-size: 0.62em;
-  color: var(--accent);
+/* Click the title to restyle it (colour + typeface cycle). */
+.hero__cycle {
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  display: inline;
+  transition: color 0.3s ease;
+}
+.hero__cycle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
 }
 
 .hero__tagline {
