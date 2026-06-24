@@ -31,9 +31,7 @@ function Hero() {
 
   return (
     <section id="top" className="hero field" style={{ background: s.bg, color: s.fg }}>
-      <span className="hero__kicker label">
-        {locked ? `Click the title to enter (${clicks}/${NEEDED})` : 'Web3 builder, portfolio 2026'}
-      </span>
+      <span className="hero__kicker label">Web3 builder, portfolio 2026</span>
 
       <h1 className="hero__lockup">
         <button
