@@ -58,6 +58,14 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
+  scrollbar-gutter: stable;
+}
+
+/* Scroll is held until the visitor has clicked the hero title enough times. */
+html.scroll-locked,
+html.scroll-locked body {
+  overflow: hidden;
+  touch-action: none;
 }
 
 body {

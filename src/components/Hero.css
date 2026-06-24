@@ -7,11 +7,13 @@
   padding-top: calc(var(--nav-height) + 3vh);
   padding-bottom: clamp(2rem, 6vh, 5rem);
   overflow: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 .hero__kicker {
   margin-bottom: clamp(1rem, 3vh, 2rem);
-  color: var(--ink-muted);
+  color: currentColor;
+  opacity: 0.65;
 }
 
 /* The masthead IS the artwork: 331px display, leading 0.80, tight tracking. */
@@ -21,7 +23,7 @@
   line-height: var(--leading-display);
   letter-spacing: var(--tracking-display);
   font-weight: 600;
-  color: var(--ink);
+  color: inherit;
 }
 
 /* Click the title to restyle it (colour + typeface cycle). */
@@ -50,7 +52,7 @@
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
   line-height: 1.4;
   font-weight: 400;
-  color: var(--ink);
+  color: inherit;
 }
 
 .hero__tagline em {

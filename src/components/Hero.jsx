@@ -1,31 +1,47 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Hero.css'
 
-// Click the masthead to restyle it: each tap swaps colour and typeface.
+// Click the masthead to restyle the whole hero: background, text colour and typeface together.
 const STYLES = [
-  { color: 'var(--ink)', font: "'Inter Tight', ui-sans-serif, sans-serif" },
-  { color: '#1a4bff', font: "'Bricolage Grotesque', sans-serif" },
-  { color: '#e5392b', font: "'Anton', sans-serif" },
-  { color: '#0e9e6a', font: "'Space Mono', monospace" },
-  { color: '#ec4899', font: "'Playfair Display', serif" },
+  { bg: '#faf9f6', fg: '#111111', font: "'Inter Tight', ui-sans-serif, sans-serif" },
+  { bg: '#1a4bff', fg: '#ffffff', font: "'Bricolage Grotesque', sans-serif" },
+  { bg: '#111111', fg: '#f8f5d1', font: "'Anton', sans-serif" },
+  { bg: '#e5392b', fg: '#ffffff', font: "'Space Mono', monospace" },
+  { bg: '#f8f5d1', fg: '#1a4bff', font: "'Playfair Display', serif" },
 ]
+
+const NEEDED = 3 // clicks required before the page unlocks
 
 function Hero() {
   const [i, setI] = useState(0)
-  const cycle = () => setI((prev) => (prev + 1) % STYLES.length)
+  const [clicks, setClicks] = useState(0)
   const s = STYLES[i]
+  const locked = clicks < NEEDED
+
+  // Scroll is locked until the visitor has played with the title.
+  useEffect(() => {
+    document.documentElement.classList.toggle('scroll-locked', locked)
+    return () => document.documentElement.classList.remove('scroll-locked')
+  }, [locked])
+
+  const cycle = () => {
+    setI((prev) => (prev + 1) % STYLES.length)
+    setClicks((c) => c + 1)
+  }
 
   return (
-    <section id="top" className="hero field field--paper">
-      <span className="hero__kicker label">Web3 builder, portfolio 2026</span>
+    <section id="top" className="hero field" style={{ background: s.bg, color: s.fg }}>
+      <span className="hero__kicker label">
+        {locked ? `Click the title to enter (${clicks}/${NEEDED})` : 'Web3 builder, portfolio 2026'}
+      </span>
 
       <h1 className="hero__lockup">
         <button
           type="button"
           className="hero__cycle"
           onClick={cycle}
-          style={{ color: s.color, fontFamily: s.font }}
-          aria-label="Passive Records. Click to restyle the title."
+          style={{ fontFamily: s.font }}
+          aria-label="Passive Records. Click to restyle and unlock the page."
         >
           Passive<br />Records
         </button>
