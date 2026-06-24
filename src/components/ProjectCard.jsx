@@ -14,12 +14,12 @@ function ProjectCard({ title, description, url, logo, links, index }) {
     <li className="work-card" data-reveal>
       <Tag {...tagProps} className="work-card__link">
         <div className="work-card__top">
-          <span className="work-card__no">{String(index).padStart(2, '0')}</span>
           {logo && (
             <span className="work-card__logo">
               <img src={logo} alt="" aria-hidden="true" />
             </span>
           )}
+          <span className="work-card__no">{String(index).padStart(2, '0')}</span>
         </div>
 
         <h3 className="work-card__title">{title}</h3>

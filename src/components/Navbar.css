@@ -12,14 +12,17 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Thin hairline only once the masthead has scrolled past. No blur, no card. */
+/* Navbar stays transparent so full-bleed sections (the video mosaic) reach the
+   very top of the screen. Its contents stay readable on any background via
+   difference blending. */
 .navbar--scrolled {
-  background: var(--paper);
-  box-shadow: 0 1px 0 var(--obsidian);
+  background: transparent;
+  box-shadow: none;
 }
 
 .navbar__brand {
-  color: var(--obsidian);
+  color: #fff;
+  mix-blend-mode: difference;
   text-transform: none;
   transition: opacity 0.2s ease;
 }

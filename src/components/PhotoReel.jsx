@@ -35,13 +35,20 @@ function PhotoReel() {
           trigger: rootRef.current,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: true,
+          scrub: 0.4,
           onEnter: () => setShots(pickShots()),
           onEnterBack: () => setShots(pickShots()),
         },
       })
+      // Hold each photo stable, then snap quickly to the next: roughly one
+      // photo per short scroll instead of a long continuous fade.
+      const HOLD = 0.82
+      const FADE = 0.18
+      let pos = 0
       for (let i = 1; i < layers.length; i += 1) {
-        tl.to(layers[i], { opacity: 1, ease: 'none', duration: 1 })
+        pos += HOLD
+        tl.to(layers[i], { opacity: 1, ease: 'power1.inOut', duration: FADE }, pos)
+        pos += FADE
       }
     }, rootRef)
     return () => ctx.revert()

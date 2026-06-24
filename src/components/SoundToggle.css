@@ -21,8 +21,10 @@
   gap: 0.5rem;
   padding: 0.3rem 0.65rem;
   background: transparent;
-  color: var(--ink);
-  border: var(--hairline);
+  /* White + difference blend keeps it readable on light, dark or cobalt. */
+  color: #fff;
+  border: 1px solid #fff;
+  mix-blend-mode: difference;
   font-family: var(--font-display);
   font-size: var(--text-label);
   letter-spacing: var(--tracking-label);
@@ -32,9 +34,9 @@
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-.sound-toggle:hover { border-color: var(--accent); }
-
+/* Playing: solid cobalt, no blend so the accent reads true everywhere. */
 .sound-toggle.is-playing {
+  mix-blend-mode: normal;
   background: var(--accent);
   color: var(--accent-text);
   border-color: var(--accent);
