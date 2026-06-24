@@ -6,11 +6,32 @@ import Projects from './components/Projects'
 import PhotoReel from './components/PhotoReel'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { useEffect } from 'react'
 import { useReveal } from './hooks/useReveal'
 import './App.css'
 
+// Every click anywhere swaps the whole site's typeface (these all share
+// --font-display via --font-ui).
+const FONTS = [
+  "'Inter Tight', ui-sans-serif, system-ui, sans-serif",
+  "'Bricolage Grotesque', sans-serif",
+  "'Anton', sans-serif",
+  "'Space Mono', monospace",
+  "'Playfair Display', serif",
+]
+
 function App() {
   useReveal()
+
+  useEffect(() => {
+    let i = 0
+    const onClick = () => {
+      i = (i + 1) % FONTS.length
+      document.documentElement.style.setProperty('--font-display', FONTS[i])
+    }
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
+  }, [])
 
   return (
     <>
