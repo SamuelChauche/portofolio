@@ -29,6 +29,19 @@ main.stack > #photo-reel {
   min-height: 0;
 }
 
+/* The video mosaic and Selected Work scroll normally (no slide-over), so the
+   full 3x3 grid is shown and Work clearly arrives after it. */
+main.stack > #videos,
+main.stack > #work {
+  position: relative;
+}
+
+/* Contact pins itself (tall section + sticky stage) to reveal the form on scroll. */
+main.stack > #contact {
+  position: relative;
+  min-height: 0;
+}
+
 /* No stacking under reduced motion: fall back to a plain vertical scroll. */
 @media (prefers-reduced-motion: reduce) {
   main.stack > section,

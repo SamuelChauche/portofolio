@@ -1,9 +1,20 @@
-/* The page resolves into one deliberate ink block: the closing slide. */
+/* Tall section so the stage can pin while the form is revealed by scrolling. */
 .contact {
+  position: relative;
+  height: 180svh;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.contact__stage {
+  position: sticky;
+  top: 0;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: safe center;
+  padding: var(--field-pad-y) var(--gutter);
+  overflow: hidden;
 }
 
 .contact__title {

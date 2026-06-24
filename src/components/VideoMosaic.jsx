@@ -5,7 +5,7 @@ import './VideoMosaic.css'
 const clips = import.meta.glob('../assets/video/clips/*.mp4', { eager: true, import: 'default' })
 const POOL = Object.keys(clips).sort().map((key) => clips[key])
 
-const TILES = 6
+const TILES = 9
 const SWAP_MS = 5000 // each square holds a clip ~5s before changing
 
 function shuffledIndices() {
@@ -89,7 +89,7 @@ function VideoMosaic() {
   }
 
   return (
-    <section ref={sectionRef} className="mosaic">
+    <section id="videos" ref={sectionRef} className="mosaic">
       <ul className="mosaic__grid">
         {tiles.map((t, i) => (
           <li key={i} className="mosaic__cell">
