@@ -68,6 +68,12 @@ html.scroll-locked body {
   touch-action: none;
 }
 
+/* Until then, only the title responds: nav and the Contact badge are inert. */
+html.scroll-locked .navbar,
+html.scroll-locked .contact-badge {
+  pointer-events: none;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
