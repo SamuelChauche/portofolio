@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './Hero.css'
 
-// Colour is random on each title click; the typeface is driven globally
-// (every click anywhere restyles it, see App).
+// The title click randomises the hero colour; the typeface is global (any
+// click anywhere restyles it, see App).
 const COLORS = [
   { bg: '#faf9f6', fg: '#111111' },
   { bg: '#1a4bff', fg: '#ffffff' },
@@ -15,19 +15,9 @@ const COLORS = [
   { bg: '#312e81', fg: '#ffffff' },
 ]
 
-const NEEDED = 3 // clicks required before the page unlocks
-
 function Hero() {
   const [colorI, setColorI] = useState(0)
-  const [clicks, setClicks] = useState(0)
-  const locked = clicks < NEEDED
   const { bg, fg } = COLORS[colorI]
-
-  // Scroll is locked until the visitor has played with the title.
-  useEffect(() => {
-    document.documentElement.classList.toggle('scroll-locked', locked)
-    return () => document.documentElement.classList.remove('scroll-locked')
-  }, [locked])
 
   const cycle = () => {
     setColorI((prev) => {
@@ -36,7 +26,6 @@ function Hero() {
       while (next === prev) next = Math.floor(Math.random() * COLORS.length)
       return next
     })
-    setClicks((c) => c + 1)
   }
 
   return (
@@ -48,7 +37,7 @@ function Hero() {
           type="button"
           className="hero__cycle"
           onClick={cycle}
-          aria-label="Passive Records. Click to restyle and unlock the page."
+          aria-label="Passive Records. Click to restyle the title."
         >
           Passive<br />Records
         </button>
