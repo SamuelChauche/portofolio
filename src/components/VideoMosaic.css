@@ -2,18 +2,21 @@
   position: relative;
   height: 100svh;
   min-height: 100svh;
+  /* Sit the grid below the fixed navbar so it does not cover the top row,
+     keeping every tile the same size. */
+  padding-top: var(--nav-height);
   background: var(--ink);
   overflow: hidden;
 }
 
-/* 3 x 2 grid, edge to edge, filling the viewport exactly (rows always whole). */
+/* 3 x 2 grid, edge to edge, filling the area below the navbar (rows always equal). */
 .mosaic__grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   width: 100%;
-  height: 100%;
+  height: calc(100svh - var(--nav-height));
   gap: 0;
 }
 

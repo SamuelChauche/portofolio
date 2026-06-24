@@ -2,7 +2,7 @@
    cross-fades full-screen photos one after another. */
 .reel {
   position: relative;
-  height: 220svh;
+  height: 260svh;
   background: var(--ink);
 }
 

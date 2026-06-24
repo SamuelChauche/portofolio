@@ -50,6 +50,8 @@ function PhotoReel() {
         tl.to(layers[i], { opacity: 1, ease: 'power1.inOut', duration: FADE }, pos)
         pos += FADE
       }
+      // Hold the last photo a beat: a couple of scrolls before the next section.
+      tl.to({}, { duration: 1.4 })
     }, rootRef)
     return () => ctx.revert()
   }, [])
